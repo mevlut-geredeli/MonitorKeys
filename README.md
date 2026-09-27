@@ -8,6 +8,8 @@ bar helper that gives you back **volume up / down / mute on the keyboard**, with
 touching the monitor's own settings and without installing any drivers or third-party
 frameworks.
 
+<img src="docs/screenshot.png" width="380" alt="MonitorKeys menu: level slider, mute, output device, keyboard control, start at login">
+
 - Single 100 KB app, built from three source files with the tools that ship with Xcode.
 - No kernel extensions, no virtual audio drivers, no Homebrew, no admin rights.
 - Audio is scaled in memory and sent to the same monitor. Nothing is recorded or transmitted.
