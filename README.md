@@ -41,6 +41,18 @@ Apple Silicon do not pass DDC through, and this approach works regardless.
 
 ## Install
 
+### Homebrew
+
+```sh
+brew install --cask mevlut-geredeli/tap/monitorkeys
+```
+
+The cask builds the app from source on your Mac (Xcode Command Line Tools required)
+and installs it to `/Applications`. Upgrade with `brew upgrade --cask monitorkeys`;
+remove with `brew uninstall --cask monitorkeys` (add `--zap` to delete its settings too).
+
+### From source
+
 ```sh
 git clone https://github.com/mevlut-geredeli/MonitorKeys.git
 cd MonitorKeys
@@ -48,7 +60,11 @@ sh install.sh
 ```
 
 `install.sh` builds the app, runs its self-test, copies it to `~/Applications` and
-launches it. Then grant two permissions, once:
+launches it.
+
+### Permissions
+
+Either way, grant two permissions once:
 
 1. **System audio recording** — macOS shows this prompt on first launch. It is what
    lets the app read and re-emit the audio stream. Approve it.
@@ -106,6 +122,9 @@ defaults delete com.mevlutgeredeli.MonitorKeys outputDevice
 
 # Volume step per key press, in percent (default 5)
 defaults write com.mevlutgeredeli.MonitorKeys step 10
+
+# Do not start at login (same as the menu toggle)
+defaults write com.mevlutgeredeli.MonitorKeys loginItem -bool false
 ```
 
 The *Output Device* submenu writes the same `outputDevice` setting. Restart the app
@@ -153,6 +172,8 @@ accessibility=true keyboardTap=true loginItem=true
 ## Limitations
 
 - Stereo Float32 outputs only, which covers HDMI and DisplayPort audio on Apple Silicon.
+- The audio path also works inside the App Sandbox (with the `audio-input`
+  entitlement), so a Mac App Store build is feasible.
 - Audio the system refuses to tap (some DRM-protected playback) is passed through unscaled.
 - The greyed-out slider in System Settings stays greyed out; the level lives in the
   MonitorKeys menu.

@@ -133,11 +133,9 @@ final class Helper: NSObject, NSApplicationDelegate {
         audio_set_level(Float(volume.level) / 100)
         buildMenu()
 
-        // Start at login on first launch; the menu toggle turns it off again.
-        if !defaults.bool(forKey: "loginItemConfigured") {
-            defaults.set(true, forKey: "loginItemConfigured")
-            setLoginItem(true)
-        }
+        // Start at login unless turned off in the menu. Re-registering on every launch keeps the
+        // login item valid when the app is moved, e.g. a Homebrew install into /Applications.
+        if defaults.object(forKey: "loginItem") as? Bool ?? true { setLoginItem(true) }
 
         // Route sound to the target whenever it (re)appears: plug-in, wake, boot.
         targetPresent = targetDevice() != nil
@@ -223,6 +221,7 @@ final class Helper: NSObject, NSApplicationDelegate {
     }
 
     func setLoginItem(_ enabled: Bool) {
+        defaults.set(enabled, forKey: "loginItem")
         do {
             if enabled { try SMAppService.mainApp.register() } else { try SMAppService.mainApp.unregister() }
         } catch { fputs("MonitorKeys: login item: \(error)\n", stderr) }
