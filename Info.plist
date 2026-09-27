@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><dict>
+<key>CFBundleIdentifier</key><string>com.mevlutgeredeli.MonitorKeys</string>
+<key>CFBundleName</key><string>MonitorKeys</string>
+<key>CFBundleExecutable</key><string>MonitorKeys</string>
+<key>CFBundlePackageType</key><string>APPL</string>
+<key>CFBundleShortVersionString</key><string>1.0.0</string>
+<key>CFBundleVersion</key><string>1</string>
+<key>LSUIElement</key><true/>
+<key>LSMinimumSystemVersion</key><string>14.2</string>
+<key>NSHumanReadableCopyright</key><string>MIT License</string>
+<key>NSAudioCaptureUsageDescription</key><string>MonitorKeys adjusts the volume of audio sent to your HDMI or DisplayPort monitor. Audio is processed in memory only; it is never recorded or transmitted.</string>
+</dict></plist>
