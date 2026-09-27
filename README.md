@@ -33,6 +33,11 @@ The DDC/CI route (sending commands to the monitor over the video cable, which ap
 like MonitorControl use) is not used: many HDMI adapters and display pipelines on
 Apple Silicon do not pass DDC through, and this approach works regardless.
 
+This is a workaround for missing system behavior. A request for native software
+volume control on HDMI/DisplayPort outputs is filed with Apple as **FB24965962**;
+if you hit the same problem, filing your own report through Feedback Assistant and
+referencing that number helps.
+
 ## Requirements
 
 - Apple Silicon Mac running macOS 14.2 or later.
