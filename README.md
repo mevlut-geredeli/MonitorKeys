@@ -51,6 +51,14 @@ The cask builds the app from source on your Mac (Xcode Command Line Tools requir
 and installs it to `/Applications`. Upgrade with `brew upgrade --cask monitorkeys`;
 remove with `brew uninstall --cask monitorkeys` (add `--zap` to delete its settings too).
 
+Homebrew build steps cannot see your keychain, so the app is ad-hoc signed and macOS
+asks for the Accessibility permission again after each upgrade. To avoid that, create
+the local signing identity once (see below) and re-sign after upgrading:
+
+```sh
+codesign --force --sign "MonitorKeys Local Signing" /Applications/MonitorKeys.app
+```
+
 ### From source
 
 ```sh
